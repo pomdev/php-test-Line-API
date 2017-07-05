@@ -6,9 +6,9 @@ $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
 $strUrl = "https://api.line.me/v2/bot/message/reply";
 
-if (!is_null($arrJson['arrJson'])) {
+if (!is_null($arrJson['events'])) {
     	// Loop through each event
-	foreach ($events['events'] as $event) {
+	foreach ($arrJson['events'] as $arrJson) {
  
         $arrHeader = array();
         $arrHeader[] = "Content-Type: application/json";
