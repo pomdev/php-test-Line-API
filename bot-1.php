@@ -13,7 +13,7 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		
         // Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+		if ($event['type'] == 'message' && $event['message']['type'] == 'text' && $event['message']['text'] == "ชื่ออะไร") {
 		
             // Get text sent
 			$text = $event['message']['text'];
@@ -24,7 +24,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => "555"
+				'text' => "นายเอก"
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -46,8 +46,7 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
-
-            }
 		}
 	}
-echo "OK 201707060035";
+}
+echo "OK 201707060050";

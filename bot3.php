@@ -15,12 +15,12 @@ if($events['events'][0]['message']['text'] == "สวัสดี"){
   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
   $arrPostData['messages'][0]['text'] = "สวัสดี ID คุณคือ ".$events['events'][0]['source']['userId'];
-}else if($events['events'][0]['message']['text'] == "ชื่ออะไร"){
+}elseif($events['events'][0]['message']['text'] == "ชื่ออะไร"){
   $arrPostData = array();
   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
   $arrPostData['messages'][0]['text'] = "ฉันยังไม่มีชื่อนะ";
-}else if($events['events'][0]['message']['text'] == "ทำอะไรได้บ้าง"){
+}elseif($events['events'][0]['message']['text'] == "ทำอะไรได้บ้าง"){
   $arrPostData = array();
   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
