@@ -50,7 +50,7 @@ if (!is_null($events['events'])) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			echo $result . "Ahoy \r\n";
+			echo $result ." 555 "."\r\n";
 		}
 	}
 }
