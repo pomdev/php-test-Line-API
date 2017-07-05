@@ -51,26 +51,7 @@ if($event['type'] == 'message' && $event['message']['text'] == "สวัสดี"){
 			$post = json_encode($data);
 
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-
-}else if($event['type'] == 'message' && $event['message']['text'] == "ชื่ออะไร"){
-  $arrPostData = array();
-  $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "ฉันยังไม่มีชื่อนะ";
-}else if($event['type'] == 'message' && $event['message']['text'] == "ทำอะไรได้บ้าง"){
-  $arrPostData = array();
-  $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "ฉันทำอะไรไม่ได้เลย คุณต้องสอนฉันอีกเยอะ";
-}else{
-  $arrPostData = array();
-  $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
 }
-
-$strUrl = "https://api.line.me/v2/bot/message/reply";
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
