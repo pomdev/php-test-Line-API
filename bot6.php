@@ -1,38 +1,59 @@
+{
+  "events": [
+      {
+        "replyToken": "nHuyWiB7yP5Zw52FIkcQobQuGDXCTA",
+        "type": "message",
+        "timestamp": 1462629479859,
+        "source": {
+             "type": "user",
+             "userId": "U206d25c2ea6bd87c17655609a1c37cb8"
+         },
+         "message": {
+             "id": "325708",
+             "type": "text",
+             "text": "Hello, world"
+          }
+      }
+  ]
+}
+
+
 <?php
 $access_token = 'mOO1A40zvrJda8pQtdHRg3t2Ns/ui0axNP1nhiX3z5XWDoCHSP9x99u/XZWG2BfsX9ex4S0P060Hk9RPNXPgc72Sr6VxN+mO6sUhtSf5iSekhT72RI0trKd/HaxJY3dRc90ZUUrNuyG7tkhiqpyvEwdB04t89/1O/w1cDnyilFU=';
-$strUrl = "https://api.line.me/v2/bot/message/reply";
+
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
-Â Â 
+  
 $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$access_token}";
-Â 
-if($events['events'][0]['message']['text'] == "à¸ªà¸§à¸±à¸ªà¸”à¸µ"){
+ 
+if($event['type'] == 'message' && $event['message']['text'] == "ÊÇÑÊ´Õ"){
   $arrPostData = array();
   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "à¸ªà¸§à¸±à¸ªà¸”à¸µ ID à¸„à¸¸à¸“à¸„à¸·à¸­ ".$events['events'][0]['source']['userId'];
-}else if($events['events'][0]['message']['text'] == "à¸Šà¸·à¹ˆà¸­à¸­à¸°à¹„à¸£"){
+  $arrPostData['messages'][0]['text'] = "ÊÇÑÊ´Õ ID ¤Ø³¤×Í ".$events['events'][0]['source']['userId'];
+}else if($event['type'] == 'message' && $event['message']['text'] == "ª×èÍÍÐäÃ"){
   $arrPostData = array();
   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "à¸‰à¸±à¸™à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µà¸Šà¸·à¹ˆà¸­à¸™à¸°";
-}else if($events['events'][0]['message']['text'] == "à¸—à¸³à¸­à¸°à¹„à¸£à¹„à¸”à¹‰à¸šà¹‰à¸²à¸‡"){
+  $arrPostData['messages'][0]['text'] = "©Ñ¹ÂÑ§äÁèÁÕª×èÍ¹Ð";
+}else if($event['type'] == 'message' && $event['message']['text'] == "·ÓÍÐäÃä´éºéÒ§"){
   $arrPostData = array();
   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "à¸‰à¸±à¸™à¸—à¸³à¸­à¸°à¹„à¸£à¹„à¸¡à¹ˆà¹„à¸”à¹‰à¹€à¸¥à¸¢ à¸„à¸¸à¸“à¸•à¹‰à¸­à¸‡à¸ªà¸­à¸™à¸‰à¸±à¸™à¸­à¸µà¸à¹€à¸¢à¸­à¸°";
+  $arrPostData['messages'][0]['text'] = "©Ñ¹·ÓÍÐäÃäÁèä´éàÅÂ ¤Ø³µéÍ§ÊÍ¹©Ñ¹ÍÕ¡àÂÍÐ";
 }else{
   $arrPostData = array();
   $arrPostData['replyToken'] = $events['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "à¸‰à¸±à¸™à¹„à¸¡à¹ˆà¹€à¸‚à¹‰à¸²à¹ƒà¸ˆà¸„à¸³à¸ªà¸±à¹ˆà¸‡";
+  $arrPostData['messages'][0]['text'] = "©Ñ¹äÁèà¢éÒã¨¤ÓÊÑè§";
 }
-Â 
-Â 
+ 
+$strUrl = "https://api.line.me/v2/bot/message/reply";
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,$strUrl);
 curl_setopt($ch, CURLOPT_HEADER, false);

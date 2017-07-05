@@ -3,17 +3,22 @@ $access_token = 'mOO1A40zvrJda8pQtdHRg3t2Ns/ui0axNP1nhiX3z5XWDoCHSP9x99u/XZWG2Bf
 
 // Get POST body content
 $content = file_get_contents('php://input');
+
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
-	// Loop through each event
+	
+    // Loop through each event
 	foreach ($events['events'] as $event) {
-		// Reply only when message sent is in 'text' format
+		
+        // Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			// Get text sent
+			
+            // Get text sent
 			$text = $event['message']['text'];
-			// Get replyToken
+			
+            // Get replyToken
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
