@@ -13,8 +13,8 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		
         // Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['text'] == 'chaiyo') {
-			
+		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+		
             // Get text sent
 			$text = $event['message']['text'];
 			
@@ -24,7 +24,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => "รับทราบ"
+				'text' => "555"
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -35,8 +35,8 @@ if (!is_null($events['events'])) {
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-			$ch = curl_init($url);
 
+			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
@@ -50,4 +50,4 @@ if (!is_null($events['events'])) {
             }
 		}
 	}
-echo "OK 201707060021";
+echo "OK 201707060035";
