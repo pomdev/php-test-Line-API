@@ -13,7 +13,7 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		
         // Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['text'] == "chaiyo") {
+		if ($event['type'] == 'message' && $event['message']['text'] == 'chaiyo') {
 			
             // Get text sent
 			$text = $event['message']['text'];
@@ -50,4 +50,4 @@ if (!is_null($events['events'])) {
             }
 		}
 	}
-echo "OK 201707060018";
+echo "OK 201707060021";
